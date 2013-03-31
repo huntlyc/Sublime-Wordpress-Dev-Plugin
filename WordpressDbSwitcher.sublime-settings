@@ -1,4 +1,4 @@
 {
     //Path to where your wp-config.php file resides
-    "wp_config_file": "/var/www/huntlywordpress.co.uk/wp-config2.php"
+    "wp_config_file": "/var/www/wordpressdir/wp-config.php"
 }
