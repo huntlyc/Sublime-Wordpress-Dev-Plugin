@@ -1,0 +1,26 @@
+[
+    {
+        "id": "tools",
+        "children":
+        [
+            {
+                "caption": "Wordpress",
+                "children":
+                [
+                    {
+                        "caption": "Switch Database",
+                        "command": "wordpress_db_switcher"
+                    },
+                    {
+                        "caption": "Toggle Debug",
+                        "command": "wordpress_debug_toggle"
+                    },
+                    {
+                        "caption": "Open Config File",
+                        "command": "wordpress_open_config"
+                    }
+                ]
+            }
+        ]
+    }
+]
