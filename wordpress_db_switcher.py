@@ -7,9 +7,29 @@ import re
 
 class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
     def run(self):
+        # Get config file location
         s = sublime.load_settings("WordpressDbSwitcher.sublime-settings")
         config_file_location = s.get("wp_config_file")
-        self.window.open_file(config_file_location)
+
+        try:  # Open up config file
+            with open(config_file_location, 'r') as wp_config:
+                pass
+
+            window = sublime.active_window()
+            window.open_file(config_file_location)
+        except IOError:  # Couldn't open config file, alert user
+            # Open the settings file
+            dir_name = os.path.join(sublime.packages_path(),
+                                    'WordpressDbSwitcher')
+            window = sublime.active_window()
+            window.open_file(os.path.join(dir_name,
+                                          'WordpressDbSwitcher' +
+                                          '.sublime-settings'))
+
+            db_names.append("wp-config file doesn't exist, " +
+                            'check your settings')
+            sublime.status_message("wp-config file doesn't exist, " +
+                                   'check your settings')
 
 
 class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
@@ -17,24 +37,34 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
         if not self.window.active_view():
             return
 
-        s = sublime.load_settings("WordpressDbSwitcher.sublime-settings")
         self.dblist = []
+
+        # Pull the config file from the settings
+        s = sublime.load_settings("WordpressDbSwitcher.sublime-settings")
         self.config_file_location = s.get("wp_config_file")
+
+        # Show the quick menu with the databases in it
         self.populate_db_list()
         self.show_db_list()
+
+    def populate_db_list(self):
+        if len(self.dblist) is 0:
+            self.dblist = self.extract_wp_db_defs()
 
     def extract_wp_db_defs(self):
         db_names = []
 
         try:
-
             with open(self.config_file_location, 'r') as wp_config:
                 file_contents = wp_config.read()
             wp_config.close()
 
+            # DB's are defined as define('DB_NAME', 'wp_default');
             repatt = '(?:\/\/)?(define\(\'DB_NAME\'.*)'
             dbs = re.findall(repatt, file_contents)
 
+            # For each database def we've found, pull out the name
+            # and optional comment to show a nice list to the user
             for db in dbs:
                 dbrepat = "define\('DB_NAME\',\s+'([^']*)'\);(\s\/\/(.*))?"
                 match = re.search(dbrepat, db)
@@ -44,60 +74,65 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
                                    (match.group(1), match.group(3)))
                 else:
                     db_names.append(match.group(1))
-        except IOError:
+        except IOError:  # Couldn't open config file, alert user
             #Open the settings file
             dir_name = os.path.join(sublime.packages_path(),
                                     'WordpressDbSwitcher')
-            self.window.open_file(os.path.join(dir_name,
-                                               'WordpressDbSwitcher' +
-                                               '.sublime-settings'))
+            window = sublime.active_window()
+            window.open_file(os.path.join(dir_name,
+                                          'WordpressDbSwitcher' +
+                                          '.sublime-settings'))
 
             db_names.append("wp-config file doesn't exist, " +
                             'check your settings')
+            sublime.status_message("wp-config file doesn't exist, " +
+                                   'check your settings')
 
         return db_names
 
-    def populate_db_list(self):
-        if len(self.dblist) is 0:
-            self.dblist = self.extract_wp_db_defs()
-
     def show_db_list(self):
+        # Show the quick find popup
         window = sublime.active_window()
         window.show_quick_panel(self.dblist,
-                                self.panel_done,
+                                self.database_selected,
                                 sublime.MONOSPACE_FONT)
 
-    def panel_done(self, selected):
-        if 0 > selected < len(self.dblist):
+    def database_selected(self, selectedListIndex):
+        if 0 > selectedListIndex < len(self.dblist):
             return
 
-        dbname = self.dblist[selected].split(' ')[0]
+        # If the user chose wp_def - my site split out the "wp_def"
+        dbname = self.dblist[selectedListIndex].split(' ')[0]
         del self.dblist[:]  # clear the list
 
         self.switch_active_database(dbname)
 
     def switch_active_database(self, dbname):
-        try:
+        try:  # open the wordpress config file
             with open(self.config_file_location, 'r') as wp_config:
                 file_contents = wp_config.read()
             wp_config.close()
 
-            #Comment out all uncommented db
+            # Comment out all uncommented db
             uncommentedDB = r'([^\/\/])define\(\'DB_NAME\''
             commentedDB = r"\1//define('DB_NAME'"
             file_contents = re.sub(uncommentedDB,
                                    commentedDB,
                                    file_contents)
 
+            # Un-comment our our chosen database
             commentedDB = r'\/\/define\(\'DB_NAME\',\s+\'%s\'' % dbname
             uncommentedDB = "define('DB_NAME', '%s'" % dbname
             file_contents = re.sub(commentedDB,
                                    uncommentedDB,
                                    file_contents)
 
+            # Overwrite the config file with our new config
             with open(self.config_file_location, 'w') as wp_config:
                 wp_config.write(file_contents)
             wp_config.close()
-        except IOError:
-            print "Cannot open file, check settings"
-            #file doesn't exist, user has already been warned
+            message = "Switched database to %s" % dbname
+            sublime.status_message(message)
+        except IOError:  # Couldn't open config file, alert user
+            sublime.status_message("wp-config file doesn't exist, " +
+                                   'check your settings')
