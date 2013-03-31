@@ -1,0 +1,5 @@
+[
+    {   "caption": "Wordpress: Switch Database",
+        "command": "wordpress_db_switcher"
+    }
+]

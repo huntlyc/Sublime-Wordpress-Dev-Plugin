@@ -1,0 +1,3 @@
+[
+    { "keys": ["ctrl+alt+w"], "command": "wordpress_db_switcher" }
+]
