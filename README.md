@@ -17,7 +17,7 @@ Allows you to quickly view/edit your wordpress config file. Default shortcut is 
 Allows you to quickly toggle the ```WP_DEBUG``` variable.
 
 ### Switch Database ###
-If you like to keep seperate databases for each site you build you can build up a list like this:
+If you like to keep seperate databases for each site you build you can build up a list like this in your wp-config file:
 
 ``` php
 //define('DB_NAME', 'wp_bootstrap_theme'); //bootstrap test
