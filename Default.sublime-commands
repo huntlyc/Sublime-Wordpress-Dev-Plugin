@@ -1,5 +1,10 @@
 [
-    {   "caption": "Wordpress: Switch Database",
+    {
+        "caption": "Wordpress: Switch Database",
         "command": "wordpress_db_switcher"
+    },
+    {
+        "caption": "Wordpress: Open Config File",
+        "command": "wordpress_open_config"
     }
 ]

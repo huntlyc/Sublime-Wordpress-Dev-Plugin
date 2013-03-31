@@ -5,6 +5,13 @@ import platform
 import re
 
 
+class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
+    def run(self):
+        s = sublime.load_settings("WordpressDbSwitcher.sublime-settings")
+        config_file_location = s.get("wp_config_file")
+        self.window.open_file(config_file_location)
+
+
 class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
     dblist = []
 
