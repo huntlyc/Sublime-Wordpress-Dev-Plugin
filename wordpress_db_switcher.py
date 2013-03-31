@@ -13,12 +13,12 @@ class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
 
 
 class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
-    dblist = []
-
     def run(self, extensions=[]):
         if not self.window.active_view():
             return
+
         s = sublime.load_settings("WordpressDbSwitcher.sublime-settings")
+        self.dblist = []
         self.config_file_location = s.get("wp_config_file")
         self.populate_db_list()
         self.show_db_list()
@@ -28,7 +28,7 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
 
         try:
 
-            with open(self.config_file_location) as wp_config:
+            with open(self.config_file_location, 'r') as wp_config:
                 file_contents = wp_config.read()
             wp_config.close()
 
@@ -62,23 +62,25 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
             self.dblist = self.extract_wp_db_defs()
 
     def show_db_list(self):
-        self.window.show_quick_panel(self.dblist,
-                                     self.panel_done,
-                                     sublime.MONOSPACE_FONT)
+        window = sublime.active_window()
+        window.show_quick_panel(self.dblist,
+                                self.panel_done,
+                                sublime.MONOSPACE_FONT)
 
     def panel_done(self, selected):
         if 0 > selected < len(self.dblist):
             return
 
         dbname = self.dblist[selected].split(' ')[0]
-        self.dblist = []  # clear the list
+        del self.dblist[:]  # clear the list
 
         self.switch_active_database(dbname)
 
     def switch_active_database(self, dbname):
         try:
-            wp_config = open(self.config_file_location, 'r+')
-            file_contents = wp_config.read()
+            with open(self.config_file_location, 'r') as wp_config:
+                file_contents = wp_config.read()
+            wp_config.close()
 
             #Comment out all uncommented db
             uncommentedDB = r'([^\/\/])define\(\'DB_NAME\''
@@ -92,9 +94,10 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
             file_contents = re.sub(commentedDB,
                                    uncommentedDB,
                                    file_contents)
-            wp_config.truncate()
-            wp_config.write(file_contents)
+
+            with open(self.config_file_location, 'w') as wp_config:
+                wp_config.write(file_contents)
             wp_config.close()
         except IOError:
-            pass
+            print "Cannot open file, check settings"
             #file doesn't exist, user has already been warned
