@@ -6,5 +6,9 @@
     {
         "caption": "Wordpress: Open Config File",
         "command": "wordpress_open_config"
+    },
+    {
+        "caption": "Wordpress: Toggle Debug",
+        "command": "wordpress_debug_toggle"
     }
 ]

@@ -136,3 +136,40 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
         except IOError:  # Couldn't open config file, alert user
             sublime.status_message("wp-config file doesn't exist, " +
                                    'check your settings')
+
+
+class WordpressDebugToggleCommand(sublime_plugin.WindowCommand):
+    def run(self):
+        s = sublime.load_settings("WordpressDbSwitcher.sublime-settings")
+        config_file_location = s.get("wp_config_file")
+
+        try:  # open the wordpress config file
+            with open(config_file_location, 'r') as wp_config:
+                file_contents = wp_config.read()
+            wp_config.close()
+
+            # Toggle the WP_DEBUG value
+            debugpat = "define\('WP_DEBUG\',\s+(true|false)\);"
+            match = re.search(debugpat, file_contents)
+            debugStatus = match.group(1)
+
+            if debugStatus == 'true':
+                debugStatus = 'false'
+            else:
+                debugStatus = 'true'
+
+            currentDebugValue = r'define\(\'WP_DEBUG\', (true|false)'
+            newDebugValue = r"define('WP_DEBUG', %s" % debugStatus
+            file_contents = re.sub(currentDebugValue,
+                                   newDebugValue,
+                                   file_contents)
+
+            # Overwrite the config file with our new config
+            with open(config_file_location, 'w') as wp_config:
+                wp_config.write(file_contents)
+            wp_config.close()
+            message = "Toggled WP_DEBUG to %s" % debugStatus
+            sublime.status_message(message)
+        except IOError:  # Couldn't open config file, alert user
+            sublime.status_message("wp-config file doesn't exist, " +
+                                   'check your settings')
