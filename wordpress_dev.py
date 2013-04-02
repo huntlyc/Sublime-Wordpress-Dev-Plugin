@@ -33,10 +33,7 @@ class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
 
 
 class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
-    def run(self, extensions=[]):
-        if not self.window.active_view():
-            return
-
+    def run(self, extensions=[]):        
         self.dblist = []
 
         # Pull the config file from the settings
