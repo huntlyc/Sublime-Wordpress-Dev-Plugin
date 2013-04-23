@@ -5,7 +5,7 @@ import platform
 import re
 
 
-class WordPressOpenConfigCommand(sublime_plugin.WindowCommand):
+class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
     def run(self):
         # Get config file location
         s = sublime.load_settings("WordPressDev.sublime-settings")
@@ -32,7 +32,7 @@ class WordPressOpenConfigCommand(sublime_plugin.WindowCommand):
                                    'check your settings')
 
 
-class WordPressDbSwitcherCommand(sublime_plugin.WindowCommand):
+class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
     def run(self, extensions=[]):
         self.dblist = []
 
@@ -135,7 +135,7 @@ class WordPressDbSwitcherCommand(sublime_plugin.WindowCommand):
                                    'check your settings')
 
 
-class WordPressDebugToggleCommand(sublime_plugin.WindowCommand):
+class WordpressDebugToggleCommand(sublime_plugin.WindowCommand):
     def run(self):
         s = sublime.load_settings("WordPressDev.sublime-settings")
         config_file_location = s.get("wp_config_file")
