@@ -5,7 +5,7 @@ Simple plugin for [Sublime Text 2](http://www.sublimetext.com/2 "Sublime Text 2"
 ## Install ##
 Take the easy route and use [Package Control](http://wbond.net/sublime_packages/package_control).  If you're not already using it, you want to jump on that band wagon!
 
-If You're hardcore or want to hack away on this plugin, clone this repo or download it.  Then simply move the *WordPressDev* folder into your Sublime Text plugins directory.
+If you're hardcore or want to hack away on this plugin, clone this repo or download it.  Then simply move the *WordPressDev* folder into your Sublime Text plugins directory.
 
 You'll also want to edit the settings file: *WordPressDev.sublime-settings* and give the plugin the path to your config file.
 
