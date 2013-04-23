@@ -5,10 +5,10 @@ import platform
 import re
 
 
-class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
+class WordPressOpenConfigCommand(sublime_plugin.WindowCommand):
     def run(self):
         # Get config file location
-        s = sublime.load_settings("WordpressDev.sublime-settings")
+        s = sublime.load_settings("WordPressDev.sublime-settings")
         config_file_location = s.get("wp_config_file")
 
         try:  # Open up config file
@@ -20,10 +20,10 @@ class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
         except IOError:  # Couldn't open config file, alert user
             # Open the settings file
             dir_name = os.path.join(sublime.packages_path(),
-                                    'WordpressDev')
+                                    'WordPressDev')
             window = sublime.active_window()
             window.open_file(os.path.join(dir_name,
-                                          'WordpressDev' +
+                                          'WordPressDev' +
                                           '.sublime-settings'))
 
             db_names.append("wp-config file doesn't exist, " +
@@ -32,12 +32,12 @@ class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
                                    'check your settings')
 
 
-class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
-    def run(self, extensions=[]):        
+class WordPressDbSwitcherCommand(sublime_plugin.WindowCommand):
+    def run(self, extensions=[]):
         self.dblist = []
 
         # Pull the config file from the settings
-        s = sublime.load_settings("WordpressDev.sublime-settings")
+        s = sublime.load_settings("WordPressDev.sublime-settings")
         self.config_file_location = s.get("wp_config_file")
 
         # Show the quick menu with the databases in it
@@ -74,10 +74,10 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
         except IOError:  # Couldn't open config file, alert user
             #Open the settings file
             dir_name = os.path.join(sublime.packages_path(),
-                                    'WordpressDev')
+                                    'WordPressDev')
             window = sublime.active_window()
             window.open_file(os.path.join(dir_name,
-                                          'WordpressDev' +
+                                          'WordPressDev' +
                                           '.sublime-settings'))
 
             db_names.append("wp-config file doesn't exist, " +
@@ -135,9 +135,9 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
                                    'check your settings')
 
 
-class WordpressDebugToggleCommand(sublime_plugin.WindowCommand):
+class WordPressDebugToggleCommand(sublime_plugin.WindowCommand):
     def run(self):
-        s = sublime.load_settings("WordpressDev.sublime-settings")
+        s = sublime.load_settings("WordPressDev.sublime-settings")
         config_file_location = s.get("wp_config_file")
 
         try:  # open the wordpress config file

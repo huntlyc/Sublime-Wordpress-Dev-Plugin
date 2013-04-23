@@ -1,14 +1,14 @@
 [
     {
-        "caption": "Wordpress: Switch Database",
+        "caption": "WordPress: Switch Database",
         "command": "wordpress_db_switcher"
     },
     {
-        "caption": "Wordpress: Open Config File",
+        "caption": "WordPress: Open Config File",
         "command": "wordpress_open_config"
     },
     {
-        "caption": "Wordpress: Toggle Debug",
+        "caption": "WordPress: Toggle Debug",
         "command": "wordpress_debug_toggle"
     }
 ]

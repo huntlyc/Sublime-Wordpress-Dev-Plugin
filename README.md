@@ -1,14 +1,14 @@
-# Sublime Text 2 Wordpress Dev Plugin #
+# Sublime Text 2 WordPress Dev Plugin #
 
 Simple plugin for [Sublime Text 2](http://www.sublimetext.com/2 "Sublime Text 2") which adds a few commands that may be handy for people building sites with wordpress.
 
 ## Install ##
-Clone this repo or download it.  Then simply move the *WordpressDev* folder into your Sublime Text plugins directory.
+Clone this repo or download it.  Then simply move the *WordPressDev* folder into your Sublime Text plugins directory.
 
-You'll also want to eddit the settings file: *WordpressDev.sublime-settings* and give the plugin the path to your config file.
+You'll also want to eddit the settings file: *WordPressDev.sublime-settings* and give the plugin the path to your config file.
 
 ## Commands ##
-Commands listed here can be found in the command pallet prefixed with ```Wordpress: ``` or they can be accessed from the _Tools ->  Wordpress_ menu
+Commands listed here can be found in the command pallet prefixed with ```WordPress: ``` or they can be accessed from the _Tools ->  WordPress_ menu
 
 ### Open Config File ###
 Allows you to quickly view/edit your wordpress config file. Default shortcut is ```ctrl+alt+o```
@@ -28,7 +28,7 @@ define('DB_NAME', 'wp_default');
 //define('DB_NAME', 'wp_rgt'); //Responsive grid test
 ```
 
-Activating the DB Switch command will bring up the quick search dialog allowing you to quickly select the database you want. 
+Activating the DB Switch command will bring up the quick search dialog allowing you to quickly select the database you want.
 *Note* the comments after the definitions are optional.  From my list above this is how the quick search list will look:
 
 ```
