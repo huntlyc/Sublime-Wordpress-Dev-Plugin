@@ -7,7 +7,15 @@ Take the easy route and use [Package Control](http://wbond.net/sublime_packages/
 
 If you're hardcore or want to hack away on this plugin, clone this repo or download it.  Then simply move the *WordPressDev* folder into your Sublime Text plugins directory.
 
-You'll also want to edit the settings file: *WordPressDev.sublime-settings* and give the plugin the path to your config file.
+Once you've donwloaded it or got it via Package Control, you want to tell it the location of your `wp-config.php` file.  To do this, go to the  _Preferences -> Package Settings -> WordPressDev_ menu and edit your *User* settings.  In that file add the following:
+``` json
+{
+    //Path to where your wp-config.php file resides
+    "wp_config_file": "/var/www/wordpressdir/wp-config.php"
+}
+```
+
+Make sure to change `"wp_config_file"` to the full path to your `wp-config.php` file!
 
 ## Commands ##
 Commands listed here can be found in the command pallet prefixed with ```WordPress: ``` or they can be accessed from the _Tools ->  WordPress_ menu
