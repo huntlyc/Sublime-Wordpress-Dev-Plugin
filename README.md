@@ -1,6 +1,6 @@
-# Sublime Text 2 WordPress Dev Plugin #
+# Sublime Text 2/3 WordPress Dev Plugin #
 
-Simple plugin for [Sublime Text 2](http://www.sublimetext.com/2 "Sublime Text 2") which adds a few commands that may be handy for people building sites with wordpress.
+Simple plugin for [Sublime Text](http://www.sublimetext.com/ "Sublime Text") which adds a few commands that may be handy for people building sites with wordpress.
 
 ## Install ##
 Take the easy route and use [Package Control](http://wbond.net/sublime_packages/package_control).  If you're not already using it, you want to jump on that band wagon!

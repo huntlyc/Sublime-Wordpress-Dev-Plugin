@@ -19,13 +19,6 @@ class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
             window.open_file(config_file_location)
         except IOError:  # Couldn't open config file, alert user
             # Open the settings file
-            dir_name = os.path.join(sublime.packages_path(),
-                                    'WordPressDev')
-            window = sublime.active_window()
-            window.open_file(os.path.join(dir_name,
-                                          'WordPressDev' +
-                                          '.sublime-settings'))
-
             db_names.append("wp-config file doesn't exist, " +
                             'check your settings')
             sublime.status_message("wp-config file doesn't exist, " +
@@ -73,13 +66,6 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
                     db_names.append(match.group(1))
         except IOError:  # Couldn't open config file, alert user
             #Open the settings file
-            dir_name = os.path.join(sublime.packages_path(),
-                                    'WordPressDev')
-            window = sublime.active_window()
-            window.open_file(os.path.join(dir_name,
-                                          'WordPressDev' +
-                                          '.sublime-settings'))
-
             db_names.append("wp-config file doesn't exist, " +
                             'check your settings')
             sublime.status_message("wp-config file doesn't exist, " +
