@@ -18,6 +18,14 @@
                     {
                         "caption": "Open Config File",
                         "command": "wordpress_open_config"
+                    },
+                    {
+                        "caption": "Wordpress Doc Lookup",
+                        "command": "wordpressdoc"
+                    },
+                    {
+                        "caption": "PHP Doc Lookup",
+                        "command": "phpdoc"
                     }
                 ]
             }

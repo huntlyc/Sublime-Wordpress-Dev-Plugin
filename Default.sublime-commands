@@ -10,5 +10,13 @@
     {
         "caption": "WordPress: Toggle Debug",
         "command": "wordpress_debug_toggle"
+    },
+    {
+        "caption": "WordPress: WordPress Doc Lookup",
+        "command": "wordpressdoc"
+    },
+    {
+        "caption": "WordPress: PHP Doc Lookup",
+        "command": "phpdoc"
     }
 ]

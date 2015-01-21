@@ -51,3 +51,11 @@ wp_rgt - Responsive grid test
 ```
 
 The default shortcut for this command is ```ctrl+alt+w```
+
+### Wordpress Doc Lookup ###
+Opens up the wordpress codex reference seraching for the highlighted text
+The default shortcut for this command is ```ctrl+w, ctrl+w```
+
+### PHP Doc Lookup ###
+Opens up the php docs seraching for the highlighted text
+The default shortcut for this command is ```ctrl+w, ctrl+p```

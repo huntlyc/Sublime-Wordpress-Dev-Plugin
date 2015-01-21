@@ -3,7 +3,23 @@ import sublime_plugin
 import os.path
 import platform
 import re
+import webbrowser
 
+class WordpressdocCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        print('doing stuff')
+        for region in self.view.sel():
+            if not region.empty():
+                s = self.view.substr(region)
+                webbrowser.open_new_tab('https://developer.wordpress.org/?s=' + s + '&post_type%5B%5D=wp-parser-function&post_type%5B%5D=wp-parser-hook&post_type%5B%5D=wp-parser-class&post_type%5B%5D=wp-parser-method')
+
+class PhpdocCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        print('doing stuff')
+        for region in self.view.sel():
+            if not region.empty():
+                s = self.view.substr(region)
+                webbrowser.open_new_tab('http://www.php.net/' + s)
 
 class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
     def run(self):
