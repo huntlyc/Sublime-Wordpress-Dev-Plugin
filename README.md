@@ -1,4 +1,4 @@
-# Sublime Text 2/3 WordPress Dev Plugin #
+# Sublime Text WordPress Dev Plugin #
 
 Simple plugin for [Sublime Text](http://www.sublimetext.com/ "Sublime Text") which adds a few commands that may be handy for people building sites with wordpress.
 
