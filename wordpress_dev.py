@@ -72,7 +72,7 @@ class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
             # For each database def we've found, pull out the name
             # and optional comment to show a nice list to the user
             for db in dbs:
-                dbrepat = "define\('DB_NAME\',\s+'([^']*)'\);(\s\/\/(.*))?"
+                dbrepat = "define\('DB_NAME\',\s+'([^']*)'\);\s*(\/\/(.*))?"
                 match = re.search(dbrepat, db)
 
                 if match.group(3) is not None:
