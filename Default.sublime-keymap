@@ -1,6 +1,6 @@
 [
     { "keys": ["ctrl+alt+w"], "command": "wordpress_db_switcher" },
     { "keys": ["ctrl+alt+o"], "command": "wordpress_open_config" },
-    { "keys": ["ctrl+w","ctrl+p"], "command": "phpdoc" },
-    { "keys": ["ctrl+w","ctrl+w"], "command": "wordpressdoc" }
+    { "keys": ["ctrl+m","ctrl+p"], "command": "phpdoc" },
+    { "keys": ["ctrl+m","ctrl+w"], "command": "wordpressdoc" }
 ]
