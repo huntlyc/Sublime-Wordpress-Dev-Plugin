@@ -40,6 +40,37 @@ class WordpressOpenConfigCommand(sublime_plugin.WindowCommand):
             sublime.status_message("wp-config file doesn't exist, " +
                                    'check your settings')
 
+class WordpressOpenParentConfigCommand(sublime_plugin.TextCommand):
+  
+  # Set by is_enabled()
+  base_name = ''
+  path_parts = []
+
+  def run(self, edit):
+    self.base_name = self.view.file_name()
+    self.path_parts = self.base_name.split('/')
+    
+    self.path_base = self.path_parts
+    self.path_base.pop()
+    self.path_base = '/'.join( self.path_base )
+
+    if len(self.base_name) > 0:
+
+      string_loc = self.base_name.find('wp-content')
+
+      # sublime.error_message( 'path base : ' + self.path_base ) 
+      if ( string_loc > 0 ):
+
+        wp_install_base = self.base_name[0:string_loc]
+        self.view.window().open_file( wp_install_base + 'wp-config.php')
+      # elif ( True ):
+        # Check if the wp-config file is in the current folder
+        # in_curr_folder = self.view.window().open_file( self.path_base + '/wp-config.php') 
+      else:
+        sublime.error_message( 'You must run this command while viewing a file inside a WordPress install in the /wp-content folder or deeper.' ) 
+
+    return False
+
 
 class WordpressDbSwitcherCommand(sublime_plugin.WindowCommand):
     def run(self, extensions=[]):

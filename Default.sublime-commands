@@ -8,6 +8,10 @@
         "command": "wordpress_open_config"
     },
     {
+        "caption": "WordPress: Open Config File for Parent WP Install",
+        "command": "wordpress_open_parent_config"
+    },
+    {
         "caption": "WordPress: Toggle Debug",
         "command": "wordpress_debug_toggle"
     },
