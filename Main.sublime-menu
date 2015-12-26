@@ -20,6 +20,10 @@
                         "command": "wordpress_open_config"
                     },
                     {
+                        "caption": "Open Config File for Parent WP Install",
+                        "command": "wordpress_open_parent_config"
+                    },
+                    {
                         "caption": "Wordpress Doc Lookup",
                         "command": "wordpressdoc"
                     },
