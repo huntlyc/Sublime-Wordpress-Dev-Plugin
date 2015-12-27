@@ -1,13 +1,13 @@
 # Sublime Text WordPress Dev Plugin #
 
-Simple plugin for [Sublime Text](http://www.sublimetext.com/ "Sublime Text") which adds a few commands that may be handy for people building sites with wordpress.
+Simple plugin for [Sublime Text](http://www.sublimetext.com/ "Sublime Text") which adds a few commands that may be handy for people building sites with WordPress.
 
 ## Install ##
 Take the easy route and use [Package Control](http://wbond.net/sublime_packages/package_control).  If you're not already using it, you want to jump on that band wagon!
 
 If you're hardcore or want to hack away on this plugin, clone this repo or download it.  Then simply move the *WordPressDev* folder into your Sublime Text plugins directory.
 
-Once you've donwloaded it or got it via Package Control, you want to tell it the location of your `wp-config.php` file.  To do this, go to the  _Preferences -> Package Settings -> WordPressDev_ menu and edit your *User* settings.  In that file add the following:
+Once you've downloaded it or got it via Package Control, you want to tell it the location of your `wp-config.php` file.  To do this, go to the  _Preferences -> Package Settings -> WordPressDev_ menu and edit your *User* settings.  In that file add the following:
 ``` json
 {
     //Path to where your wp-config.php file resides
@@ -17,17 +17,26 @@ Once you've donwloaded it or got it via Package Control, you want to tell it the
 
 Make sure to change `"wp_config_file"` to the full path to your `wp-config.php` file!
 
+_You can also now access your `wp-config.php` without setting anything in Sublime Text. See below._
+
 ## Commands ##
 Commands listed here can be found in the command pallet prefixed with ```WordPress: ``` or they can be accessed from the _Tools ->  WordPress_ menu
 
 ### Open Config File ###
-Allows you to quickly view/edit your wordpress config file. Default shortcut is ```ctrl+alt+o```
+Allows you to quickly view/edit your WordPress config file. Default shortcut is ```ctrl+alt+o```
+
+### Open Config File for Parent WP Install ###
+
+Allows you to open the config file in the relative root of your WordPress install.
+
+No default shortcut. You can access this command through the _Tools ->  WordPress_ menu or using the command palette
+
 
 ### Toggle Debug ###
 Allows you to quickly toggle the ```WP_DEBUG``` variable.
 
 ### Switch Database ###
-If you like to keep seperate databases for each site you build you can build up a list like this in your wp-config file:
+If you like to keep separate databases for each site you build you can build up a list like this in your wp-config file:
 
 ``` php
 //define('DB_NAME', 'wp_bootstrap_theme'); //bootstrap test
@@ -52,10 +61,10 @@ wp_rgt - Responsive grid test
 
 The default shortcut for this command is ```ctrl+alt+w```
 
-### Wordpress Doc Lookup ###
-Opens up the wordpress codex reference seraching for the highlighted text
+### WordPress Doc Lookup ###
+Opens up the WordPress codex reference seraching for the highlighted text
 The default shortcut for this command is ```ctrl+m, ctrl+w```
 
 ### PHP Doc Lookup ###
-Opens up the php docs seraching for the highlighted text
+Opens up the PHP docs searching for the highlighted text
 The default shortcut for this command is ```ctrl+m, ctrl+p```

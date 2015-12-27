@@ -1,1 +1,5 @@
-{"description": "Some helpful additions to Sublime Text if you do a lot of wordpress sites: PHP/WordPress Function reference lookups, Swith DBs, Toggle Debug and quickly access your config file", "version": "2015.01.22.16.04.50", "url": "https://github.com/huntlyc/Sublime-Wordpress-Dev-Plugin"}
+{
+  "description": "Some helpful additions to Sublime Text if you do a lot of wordpress sites: PHP/WordPress Function reference lookups, Switch DBs, Toggle Debug and quickly access your config file",
+  "version": "2015.12.26",
+  "url": "https://github.com/huntlyc/Sublime-Wordpress-Dev-Plugin"
+}
